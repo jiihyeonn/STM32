@@ -1,13 +1,14 @@
+#include "driver/button.h"
 #include "driver/cli.h"
+#include "driver/temp.h"
 #include "led.h"
 #include "uart.h"
-#include "hw_def.h"
-#include "cli.h"
-#include "hw.h"
 
 void hwInit(void){
     ledInit();
     uartInit();
     cliInit();
+    buttonInit();
+    tempInit();
 }
 

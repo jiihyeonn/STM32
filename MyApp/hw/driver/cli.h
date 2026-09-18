@@ -1,16 +1,20 @@
-#ifndef ___HW__DRIVER__CLI_H__
-#define ___HW__DRIVER__CLI_H__
+#ifndef __HW_DRIVER_CLI_H_    
+#define __HW_DRIVER_CLI_H_
 
 #include "hw_def.h"
-#include <stdint.h>
-#include <stdbool.h>
+#include "log.h"
+
+typedef void (*cli_callback_t)(void);
+
+void cliSetCtrlHandler(cli_callback_t handler);
+
 
 void cliInit();
 void cliMain();
 void cliPrintf(const char *fmt, ...);
 
-void cliParsArgs(char *line_buf);
-bool cliAdd(const char *cmd_str, void (*cmd_func)(uint8_t argc, char **argv));
+void cliParseArgs(char* line_buf);
+bool cliAdd(const char* cmd_str, void (*cmd_func)(uint8_t argc, char** argv));
 void cliRunCommand();
 
-#endif // ___HW__DRIVER__CLI_H__
+#endif // __HW_DRIVER_UART_H_
